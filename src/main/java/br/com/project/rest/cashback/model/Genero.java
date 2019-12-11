@@ -1,15 +1,21 @@
 package br.com.project.rest.cashback.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@Entity
-@NoArgsConstructor
 public class Genero {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,29 +23,29 @@ public class Genero {
     private Long id;
     private String descricao;
 
-    private Genero(GeneroBuilder builder){
-        id = builder.id;
-        descricao = builder.descricao;
-    }
-
-    private static class GeneroBuilder {
+    public static class Builder {
 
         private Long id;
         private String descricao;
 
-        private GeneroBuilder setId(){
+        public Builder setId(Long id){
             this.id = id;
             return this;
         }
 
-        private GeneroBuilder withDescricao(){
+        public Builder withDescricao(String descricao){
             this.descricao = descricao;
             return this;
         }
 
-        private Genero build(){
+        public Genero build(){
             return new Genero(this);
         }
 
+    }
+
+    private Genero(Builder builder){
+        id = builder.id;
+        descricao = builder.descricao;
     }
 }

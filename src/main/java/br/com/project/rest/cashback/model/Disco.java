@@ -1,16 +1,19 @@
 package br.com.project.rest.cashback.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Disco {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +22,6 @@ public class Disco {
     private UUID uniqueId;
     private String nome;
     private Date dataLancamento;
-    private Long totalFaixas;
 
     @ManyToOne
     @JoinColumn(name = "genero_id")

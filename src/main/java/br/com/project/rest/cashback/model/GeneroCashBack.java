@@ -1,6 +1,7 @@
 package br.com.project.rest.cashback.model;
 
 import br.com.project.rest.cashback.enumeration.Dia;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,9 +9,10 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
 @Table(name = "genero_cashback")
 public class GeneroCashBack {
 
@@ -27,36 +29,29 @@ public class GeneroCashBack {
 
     private Double cashback;
 
-    private GeneroCashBack(GeneroCashBackBuilder builder){
-        id = builder.id;
-        genero = builder.genero;
-        dia = builder.dia;
-        cashback = builder.cashback;
-    }
-
-    private static class GeneroCashBackBuilder {
+    public static class Builder {
 
         private Long id;
         private Genero genero;
         private Dia dia;
         private Double cashback;
 
-        public GeneroCashBackBuilder setId(){
+        public Builder setId(Long id){
             this.id = id;
             return this;
         }
 
-        public GeneroCashBackBuilder withGenero(){
+        public Builder withGenero(Genero genero){
             this.genero = genero;
             return this;
         }
 
-        public GeneroCashBackBuilder withDia(){
+        public Builder withDia(Dia dia){
             this.dia = dia;
             return this;
         }
 
-        public GeneroCashBackBuilder withCashback(){
+        public Builder withCashback(Double cashback){
             this.cashback = cashback;
             return this;
         }
@@ -64,6 +59,13 @@ public class GeneroCashBack {
         public GeneroCashBack build(){
             return new GeneroCashBack(this);
         }
+    }
+
+    private GeneroCashBack(Builder builder){
+        id = builder.id;
+        genero = builder.genero;
+        dia = builder.dia;
+        cashback = builder.cashback;
     }
 
 }

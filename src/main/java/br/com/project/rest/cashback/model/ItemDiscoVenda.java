@@ -29,15 +29,7 @@ public class ItemDiscoVenda {
 
     private Double valorCashback;
 
-    private ItemDiscoVenda(ItemDiscoVendaBuilder builder){
-        id = builder.id;
-        disco = builder.disco;
-        venda = builder.venda;
-        valorVenda = builder.valorVenda;
-        valorCashback = builder.valorCashback;
-    }
-
-    private static class ItemDiscoVendaBuilder {
+    public static class Builder {
 
         private Long id;
         private Disco disco;
@@ -45,27 +37,27 @@ public class ItemDiscoVenda {
         private Double valorVenda;
         private Double valorCashback;
 
-        public ItemDiscoVendaBuilder setId(){
+        public Builder setId(Long id){
             this.id = id;
             return this;
         }
 
-        public ItemDiscoVendaBuilder withDisco(){
+        public Builder withDisco(Disco disco){
             this.disco = disco;
             return this;
         }
 
-        public ItemDiscoVendaBuilder withVenda(){
+        public Builder withVenda(Venda venda){
             this.venda = venda;
             return this;
         }
 
-        public ItemDiscoVendaBuilder withValorVenda(){
+        public Builder withValorVenda(Double valorVenda){
             this.valorVenda = valorVenda;
             return this;
         }
 
-        public ItemDiscoVendaBuilder withValorCashback(){
+        public Builder withValorCashback(Double valorCashback){
             this.valorCashback = valorCashback;
             return this;
         }
@@ -73,5 +65,13 @@ public class ItemDiscoVenda {
         public ItemDiscoVenda build(){
             return new ItemDiscoVenda(this);
         }
+    }
+
+    private ItemDiscoVenda(Builder builder){
+        id = builder.id;
+        disco = builder.disco;
+        venda = builder.venda;
+        valorVenda = builder.valorVenda;
+        valorCashback = builder.valorCashback;
     }
 }

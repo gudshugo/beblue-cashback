@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -26,45 +27,37 @@ public class Venda {
     @JoinColumn(name = "venda_id")
     private List<ItemDiscoVenda> itemDiscoVendas;
 
-    private LocalDateTime dataVenda;
+    private Date dataVenda;
 
-    private Venda (VendaBuilder builder){
-        id = builder.id;
-        valorVenda = builder.valorVenda;
-        valorCashback = builder.valorCashback;
-        itemDiscoVendas = builder.itemDiscoVendas;
-        dataVenda  = builder.dataVenda;
-    }
-
-    private static class VendaBuilder {
+    public static class Builder {
 
         private Long id;
         private Double valorVenda;
         private Double valorCashback;
-        private LocalDateTime dataVenda;
+        private Date dataVenda;
         private List<ItemDiscoVenda> itemDiscoVendas;
 
-        public VendaBuilder setId(){
+        public Builder setId(Long id){
             this.id = id;
             return this;
         }
 
-        public VendaBuilder withValorVenda(){
+        public Builder withValorVenda(Double valorVenda){
             this.valorVenda = valorVenda;
             return this;
         }
 
-        public VendaBuilder withValorCashback(){
+        public Builder withValorCashback(Double valorCashback){
             this.valorCashback = valorCashback;
             return this;
         }
 
-        public VendaBuilder withDataVenda(){
+        public Builder withDataVenda(Date dataVenda){
             this.dataVenda = dataVenda;
             return this;
         }
 
-        public VendaBuilder withItemDiscoVendas(){
+        public Builder withItemDiscoVendas(List<ItemDiscoVenda> itemDiscoVendas){
             this.itemDiscoVendas = itemDiscoVendas;
             return this;
         }
@@ -72,6 +65,14 @@ public class Venda {
         public Venda build(){
             return new Venda(this);
         }
+    }
+
+    private Venda (Builder builder){
+        id = builder.id;
+        valorVenda = builder.valorVenda;
+        valorCashback = builder.valorCashback;
+        itemDiscoVendas = builder.itemDiscoVendas;
+        dataVenda  = builder.dataVenda;
     }
 
 }
