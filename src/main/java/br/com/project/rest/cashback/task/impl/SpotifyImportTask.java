@@ -18,6 +18,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -52,10 +55,10 @@ public class SpotifyImportTask implements ISpotifyImportTask {
 
             Paging<Track> tracks = spotifyConnection.searchTracks(String.format("genre: %s", GeneroEnum.toGender(genero.getDescricao())));
 
-            List<Disco> discos = Arrays.stream(tracks.getItems()).map(track -> new Disco.Builder()
+            List<Disco> discos = Arrays.stream(tracks.getItems())
+                    .map(track -> new Disco.Builder()
                     .withUniqueId(UUID.randomUUID())
                     .withNome(track.getAlbum().getName())
-                    .withDataLancamento(DateUtils.parseDate(track.getAlbum().getReleaseDate()))
                     .withGenero(genero)
                     .build()).collect(Collectors.toList());
 

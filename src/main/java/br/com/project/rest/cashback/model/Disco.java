@@ -21,7 +21,6 @@ public class Disco {
     private Long id;
     private UUID uniqueId;
     private String nome;
-    private Date dataLancamento;
 
     @ManyToOne
     @JoinColumn(name = "genero_id")
@@ -32,7 +31,6 @@ public class Disco {
         private Long id;
         private UUID uniqueId;
         private String nome;
-        private Date dataLancamento;
         private Genero genero;
 
         public Builder setId(Long id){
@@ -47,11 +45,6 @@ public class Disco {
 
         public Builder withNome(String nome){
             this.nome = nome;
-            return this;
-        }
-
-        public Builder withDataLancamento(Date dataLancamento){
-            this.dataLancamento = dataLancamento;
             return this;
         }
 
@@ -70,7 +63,6 @@ public class Disco {
         id = builder.id;
         uniqueId = builder.uniqueId;
         nome = builder.nome;
-        dataLancamento = builder.dataLancamento;
         genero = builder.genero;
     }
 

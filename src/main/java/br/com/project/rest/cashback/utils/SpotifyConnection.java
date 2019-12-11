@@ -1,5 +1,6 @@
 package br.com.project.rest.cashback.utils;
 
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.exceptions.detailed.UnauthorizedException;
@@ -53,6 +54,7 @@ public class SpotifyConnection {
 
         if(authenticated) {
             SearchTracksRequest searchTracksRequest = spotifyApi.searchTracks(genero)
+                    .market(CountryCode.US)
                     .limit(50)
                     .build();
 
