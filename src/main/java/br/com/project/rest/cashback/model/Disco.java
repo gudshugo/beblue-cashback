@@ -1,18 +1,16 @@
 package br.com.project.rest.cashback.model;
 
-import lombok.Getter;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.UUID;
 
-
 @Entity
+@AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 public class Disco {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,65 +18,58 @@ public class Disco {
     private Long id;
     private UUID uniqueId;
     private String nome;
-    private LocalDateTime dataLancamento;
+    private Date dataLancamento;
     private Long totalFaixas;
 
     @ManyToOne
     @JoinColumn(name = "genero_id")
     private Genero genero;
 
-    private Disco(DiscoBuilder builder){
-        id = builder.id;
-        uniqueId = builder.uniqueId;
-        nome = builder.nome;
-        dataLancamento = builder.dataLancamento;
-        totalFaixas = builder.totalFaixas;
-        genero = builder.genero;
-    }
-
-    private static class DiscoBuilder {
+    public static class Builder {
 
         private Long id;
         private UUID uniqueId;
         private String nome;
-        private LocalDateTime dataLancamento;
-        private Long totalFaixas;
+        private Date dataLancamento;
         private Genero genero;
 
-        public DiscoBuilder setId(){
+        public Builder setId(Long id){
             this.id = id;
             return this;
         }
 
-        public DiscoBuilder withUniqueId(){
-            this.uniqueId = UUID.randomUUID();
+        public Builder withUniqueId(UUID uniqueId){
+            this.uniqueId = uniqueId;
             return this;
         }
 
-        public DiscoBuilder withNome(){
+        public Builder withNome(String nome){
             this.nome = nome;
             return this;
         }
 
-        public DiscoBuilder withDataLancamento(){
+        public Builder withDataLancamento(Date dataLancamento){
             this.dataLancamento = dataLancamento;
             return this;
         }
 
-        public DiscoBuilder withTotalFaixas(){
-            this.totalFaixas = totalFaixas;
-            return this;
-        }
-
-        public DiscoBuilder withGenero(){
+        public Builder withGenero(Genero genero){
             this.genero = genero;
             return this;
         }
 
-        public Disco build(){
+        public Disco build() {
             return new Disco(this);
         }
 
+    }
+
+    private Disco(Builder builder) {
+        id = builder.id;
+        uniqueId = builder.uniqueId;
+        nome = builder.nome;
+        dataLancamento = builder.dataLancamento;
+        genero = builder.genero;
     }
 
 }

@@ -1,30 +1,69 @@
 package br.com.project.rest.cashback.task.impl;
 
-import br.com.project.rest.cashback.task.SpotifyImportTask;
-import br.com.project.rest.cashback.utils.spotify.SpotifyConnection;
+import br.com.project.rest.cashback.enumeration.GeneroEnum;
+import br.com.project.rest.cashback.model.Disco;
+import br.com.project.rest.cashback.model.Genero;
+import br.com.project.rest.cashback.service.IDiscoService;
+import br.com.project.rest.cashback.service.IGeneroService;
+import br.com.project.rest.cashback.service.ISpotifyIntegrationService;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.Track;
+import org.apache.http.client.utils.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
-public class SpotifyImportTaskImpl implements SpotifyImportTask {
+@Component
+public class SpotifyImportTaskImpl {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SpotifyImportTaskImpl.class);
 
-    private static SpotifyConnection spotifyConnection;
+    private final ISpotifyIntegrationService spotifyIntegrationService;
+
+    private final IGeneroService generoService;
+
+    private final IDiscoService discoService;
 
     @Autowired
-    public SpotifyImportTaskImpl(SpotifyConnection spotifyConnection){
-        this.spotifyConnection = spotifyConnection;
+    public SpotifyImportTaskImpl(ISpotifyIntegrationService spotifyIntegrationService, IGeneroService generoService, IDiscoService discoService){
+        this.spotifyIntegrationService = spotifyIntegrationService;
+        this.generoService = generoService;
+        this.discoService = discoService;
     }
 
-    public Paging<Track> importarDiscos() throws IOException, SpotifyWebApiException {
+    @Scheduled(initialDelay=0, fixedRate=4*60*60*1000)
+    public void importarDiscos() throws IOException, SpotifyWebApiException {
 
-        return spotifyConnection.searchTracks("pop");
+        if (LOGGER.isInfoEnabled()) LOGGER.info("Inicio da importação dos discos da Spotify API.");
+
+        List<Genero> generos = generoService.findGeneros();
+
+        for (Genero genero : generos) {
+
+            Paging<Track> tracks = spotifyIntegrationService.searchTracks("genre:" + GeneroEnum.toGender(genero.getDescricao()));
+
+            List<Disco> discos = Arrays.stream(tracks.getItems()).map(track -> new Disco.Builder()
+                                .withUniqueId(UUID.randomUUID())
+                                .withNome(track.getAlbum().getName())
+                                .withDataLancamento(DateUtils.parseDate(track.getAlbum().getReleaseDate()))
+                                .withGenero(genero)
+                                .build()).collect(Collectors.toList());
+
+            discoService.saveDiscos(discos);
+
+        }
+
+        if (LOGGER.isInfoEnabled()) LOGGER.info("Fim da importação dos discos da Spotify API.");
 
     }
 
