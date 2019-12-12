@@ -16,5 +16,4 @@ public interface IDiscoService {
 
     Disco findDisco(Long id);
 
-    List<Disco> findListaDiscosPorIds(List<Long> discosIds);
 }
