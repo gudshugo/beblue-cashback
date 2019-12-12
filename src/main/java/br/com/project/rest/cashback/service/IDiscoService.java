@@ -12,6 +12,7 @@ public interface IDiscoService {
 
     Long checkIfExistsAnyEntry();
 
-    Page<Disco> findAlbums(Long generoId, Integer page, Integer linesPerPage, String orderBy, String direction);
+    Page<Disco> findDiscos(Long generoId, Integer page, Integer linesPerPage, String orderBy, String direction);
 
+    Disco findDisco(Long id);
 }

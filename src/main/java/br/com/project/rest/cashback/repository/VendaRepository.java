@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-public interface DiscoRepository extends JpaRepository<Disco, Integer> {
+public interface VendaRepository extends JpaRepository<Disco, Integer> {
 
     @Query("select count(e.id) from Disco e")
     Long checkIfExistsAnyEntry();
