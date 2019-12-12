@@ -1,5 +1,4 @@
 package br.com.project.rest.cashback.service;
 
-public interface IVendaService {
-
+public interface IItemDiscoVendaService {
 }

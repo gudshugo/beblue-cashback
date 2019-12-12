@@ -48,4 +48,9 @@ public class DiscoService implements IDiscoService {
 
         throw new DiscoNotFoundException(String.format("Disco com id: %d não encontrado", id));
     }
+
+    @Override
+    public List<Disco> findListaDiscosPorIds(List<Long> discosIds){
+        return discoRepository.findDiscoByIdIn(discosIds);
+    }
 }

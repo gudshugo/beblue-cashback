@@ -15,4 +15,6 @@ public interface IDiscoService {
     Page<Disco> findDiscos(Long generoId, Integer page, Integer linesPerPage, String orderBy, String direction);
 
     Disco findDisco(Long id);
+
+    List<Disco> findListaDiscosPorIds(List<Long> discosIds);
 }
