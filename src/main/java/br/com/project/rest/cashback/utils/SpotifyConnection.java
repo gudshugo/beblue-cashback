@@ -2,27 +2,24 @@ package br.com.project.rest.cashback.utils;
 
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.exceptions.detailed.UnauthorizedException;
-import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.Track;
-import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRequest;
 import com.wrapper.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
 import com.wrapper.spotify.requests.data.search.simplified.SearchTracksRequest;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.List;
 
 @Component
 public class SpotifyConnection {
 
-    private static String clientID = "eee034204d184245bd1147a92e4906e3";
-    private static String clientSecret = "4f1611af4e2c40419db080b2cc16ca52";
-    private static String accessToken = "BQA2qX4IlCDmUwOgzWxfjBy5FXtsI2SacHtqoFZqEP8fpUZVDSnvz7BY030_laZP0KjIBWqGcrJQLEf9CyC0_tI4nvjfzRuBx7-0bdp6jmnPb5wiDnb83Roh5Y-pu_aZHG5HLGGrwibeQmo";
+    private static final String clientID = "eee034204d184245bd1147a92e4906e3";
+    private static final String clientSecret = "4f1611af4e2c40419db080b2cc16ca52";
+    private static final String accessToken = "BQA99FnwNr2ZPhzs-wCREhhRUWbZVslLwPyiuda6nu_w_3hd90a3CeI3bvgPx6NxFe2yoz_qJN68Uau5w3dEl3BLeIiROChEyPYmj8APAcJ_6zUrigQ0G81jHiDMLIsVO3NOcs9W66Q-l5b-ew1Pv6Q";
 
     private static SpotifyApi spotifyApi = new SpotifyApi.Builder()
             .setClientId(clientID)
@@ -54,7 +51,7 @@ public class SpotifyConnection {
 
         if(authenticated) {
             SearchTracksRequest searchTracksRequest = spotifyApi.searchTracks(genero)
-                    .market(CountryCode.US)
+                    .market(CountryCode.PT)
                     .limit(50)
                     .build();
 

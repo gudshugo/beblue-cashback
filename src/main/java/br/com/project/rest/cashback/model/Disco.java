@@ -1,12 +1,12 @@
 package br.com.project.rest.cashback.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -21,7 +21,9 @@ public class Disco {
     private Long id;
     private UUID uniqueId;
     private String nome;
+    private Double valor;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "genero_id")
     private Genero genero;
@@ -31,6 +33,7 @@ public class Disco {
         private Long id;
         private UUID uniqueId;
         private String nome;
+        private Double valor;
         private Genero genero;
 
         public Builder setId(Long id){
@@ -45,6 +48,11 @@ public class Disco {
 
         public Builder withNome(String nome){
             this.nome = nome;
+            return this;
+        }
+
+        public Builder withValor(Double valor){
+            this.valor = valor;
             return this;
         }
 
@@ -63,6 +71,7 @@ public class Disco {
         id = builder.id;
         uniqueId = builder.uniqueId;
         nome = builder.nome;
+        valor = builder.valor;
         genero = builder.genero;
     }
 
