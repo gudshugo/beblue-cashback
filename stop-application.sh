@@ -8,8 +8,8 @@ echo "Projeto de uma API REST em Java (Spring Framework) referente ao teste téc
 
 
 
-echo "Finalizando docker-compose..."
-sudo docker-compose -f docker-compose.yml stop;
+echo "Derrubando container..."
+sudo docker stop cashback-api;
 
 
-echo "Parando a aplicação..."
+echo "Aplicação offline..."

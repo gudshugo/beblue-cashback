@@ -40,7 +40,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
                 .title("Bem vindo ao Beblue CashBack API")
                 .description("Projeto de uma API REST em Java (Spring Framework) referente ao teste técnico para desenvolvedor java na Fintech Beblue.")
                 .version("0.0.1")
-                .contact(new Contact("Hugo Gois", "gudshugo@gmail.com"))
+                .contact(new Contact("Hugo Gois","https://www.linkedin.com/in/hugo-gois/", "gudshugo@gmail.com"))
                 .build();
     }
     

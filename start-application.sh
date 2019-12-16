@@ -8,8 +8,8 @@ echo "Projeto de uma API REST em Java (Spring Framework) referente ao teste téc
 
 
 
-echo "Inicializando docker-compose..."
-sudo docker-compose -f docker-compose.yml up --build -d;
+echo "Inicializando container..."
 
+sudo docker build -f application/Dockerfile -t gudshugo/cashback-api . && sudo docker run -d -p 80:80 --network host --name cashback-api gudshugo/cashback-api
 
-echo "Finalizado o deploy da aplicação..."
+echo "Aplicação online..."
