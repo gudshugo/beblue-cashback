@@ -21,7 +21,7 @@ public class ItemDiscoVenda {
     @JoinColumn(name = "disco_id")
     private Disco disco;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "venda_id")
     private Venda venda;
 

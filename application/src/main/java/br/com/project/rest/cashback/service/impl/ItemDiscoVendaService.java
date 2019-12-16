@@ -46,7 +46,6 @@ public class ItemDiscoVendaService implements IItemDiscoVendaService {
         if(!findCashbackPorDisco.isEmpty()){
 
             Venda venda = new Venda.Builder()
-                    .withUniqueId(UUID.randomUUID())
                     .build();
 
             List<ItemDiscoVenda> itens = findCashbackPorDisco.entrySet().stream()
@@ -54,13 +53,17 @@ public class ItemDiscoVendaService implements IItemDiscoVendaService {
                     .withVenda(venda)
                     .withValorVenda(item.getKey().getValor())
                     .withDisco(item.getKey())
-                    .withValorCashback(item.getValue())
+                    .withValorCashback(item.getKey().getValor() * item.getValue())
                     .build()).collect(Collectors.toList());
 
+            itemDiscoVendaRepository.saveAll(itens);
+
             vendaService.saveVenda(itens);
+
+            return true;
         }
 
-        return true;
+       return false;
     }
 
     private Map<Disco, Double> recuperarCashbackPorDiscos(List<Long> listaDiscosIds){

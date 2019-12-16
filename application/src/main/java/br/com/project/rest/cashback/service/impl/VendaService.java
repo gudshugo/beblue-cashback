@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class VendaService implements IVendaService {
@@ -24,6 +25,18 @@ public class VendaService implements IVendaService {
 
     public void saveVenda(List<ItemDiscoVenda> itens){
 
+        Double totalVenda = itens.stream().mapToDouble(ItemDiscoVenda::getValorVenda).reduce(0, Double::sum);
+        Double totalCashback = itens.stream().mapToDouble(ItemDiscoVenda::getValorCashback).reduce(0, Double::sum);
+
+        Venda venda = new Venda.Builder()
+                .withDataVenda(new Date())
+                .withValorVenda(totalVenda)
+                .withUniqueId(UUID.randomUUID())
+                .withValorCashback(totalCashback)
+                .withItemDiscoVendas(itens)
+                .build();
+
+        vendaRepository.save(venda);
     }
 
 }
