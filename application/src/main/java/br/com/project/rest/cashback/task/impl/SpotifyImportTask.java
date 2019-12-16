@@ -58,7 +58,8 @@ public class SpotifyImportTask implements ISpotifyImportTask {
 
                     Paging<Track> tracks = spotifyConnection.searchTracks(String.format("genre: %s + year:1995-2019", GeneroEnum.toGender(genero.getDescricao())));
 
-                    List<Disco> discos = Arrays.stream(tracks.getItems())
+                    List<Disco> discos = Arrays
+                            .stream(tracks.getItems())
                             .map(track -> new Disco.Builder()
                                     .withUniqueId(UUID.randomUUID())
                                     .withNome(track.getAlbum().getName())

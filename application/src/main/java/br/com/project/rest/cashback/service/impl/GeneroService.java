@@ -19,7 +19,5 @@ public class GeneroService implements IGeneroService {
     }
 
     @Override
-    public List<Genero> findGeneros(){
-        return generoRepository.findAll();
-    }
+    public List<Genero> findGeneros(){return generoRepository.findAll();}
 }

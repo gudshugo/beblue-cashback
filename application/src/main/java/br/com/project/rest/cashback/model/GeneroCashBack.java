@@ -1,6 +1,6 @@
 package br.com.project.rest.cashback.model;
 
-import br.com.project.rest.cashback.enumeration.Dia;
+import br.com.project.rest.cashback.enumeration.DiaEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,8 +24,8 @@ public class GeneroCashBack {
     @JoinColumn(name = "genero_id")
     private Genero genero;
 
-    @Enumerated(EnumType.ORDINAL)
-    private Dia dia;
+    @Column(name = "dia")
+    private DiaEnum dia;
 
     private Double cashback;
 
@@ -33,7 +33,7 @@ public class GeneroCashBack {
 
         private Long id;
         private Genero genero;
-        private Dia dia;
+        private DiaEnum dia;
         private Double cashback;
 
         public Builder setId(Long id){
@@ -46,7 +46,7 @@ public class GeneroCashBack {
             return this;
         }
 
-        public Builder withDia(Dia dia){
+        public Builder withDia(DiaEnum dia){
             this.dia = dia;
             return this;
         }
