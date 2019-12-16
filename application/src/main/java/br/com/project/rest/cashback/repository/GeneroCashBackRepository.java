@@ -10,6 +10,9 @@ import java.util.List;
 
 public interface GeneroCashBackRepository extends JpaRepository<GeneroCashBack, Integer> {
 
-    List<Disco> findGeneroCashBackByGeneroInAndDia(List<Long> discos, DiaEnum dia);
+    @Query(value = "select gc.cashback from GeneroCashBack gc " +
+            " inner join Disco d on d.genero = gc.genero " +
+            " where d.id in (:discos) and gc.dia = :dia")
+    List<Double> findGeneroCashBackByGeneroInAndDia(List<Long> discos, DiaEnum dia);
 
 }

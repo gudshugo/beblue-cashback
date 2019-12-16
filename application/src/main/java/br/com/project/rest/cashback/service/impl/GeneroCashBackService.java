@@ -20,7 +20,7 @@ public class GeneroCashBackService implements IGeneroCashBackService {
     }
 
     @Override
-    public List<Disco> findGeneroCashBackPorGeneroHoje(List<Long> discos, DiaEnum dia){
+    public List<Double> findGeneroCashBackPorGeneroHoje(List<Long> discos, DiaEnum dia){
         return generoCashBackRepository.findGeneroCashBackByGeneroInAndDia(discos, dia);
     }
 }

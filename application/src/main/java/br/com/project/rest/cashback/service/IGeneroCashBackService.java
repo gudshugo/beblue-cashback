@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface IGeneroCashBackService {
 
-    List<Disco> findGeneroCashBackPorGeneroHoje(List<Long> discos, DiaEnum dia);
+    List<Double> findGeneroCashBackPorGeneroHoje(List<Long> discos, DiaEnum dia);
 
 }

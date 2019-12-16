@@ -5,9 +5,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -29,12 +29,15 @@ public class Venda {
 
     private Date dataVenda;
 
+    private UUID uniqueId;
+
     public static class Builder {
 
         private Long id;
         private Double valorVenda;
         private Double valorCashback;
         private Date dataVenda;
+        private UUID uniqueId;
         private List<ItemDiscoVenda> itemDiscoVendas;
 
         public Builder setId(Long id){
@@ -54,6 +57,11 @@ public class Venda {
 
         public Builder withDataVenda(Date dataVenda){
             this.dataVenda = dataVenda;
+            return this;
+        }
+
+        public Builder withUniqueId(UUID uniqueId){
+            this.uniqueId = uniqueId;
             return this;
         }
 
