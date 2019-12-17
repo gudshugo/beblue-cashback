@@ -65,6 +65,8 @@ onde o parâmetro obrigatório da requisição são dataInicio e dataFim. Os par
  http://localhost:8089/swagger-ui.html
 ```   
 
+Caso queira importar o projeto em alguma IDE, importar apenas a pasta /application.
+
 ## Melhorias no projeto:
 
 1. Criar ambiente de testes automatizados por meio de ferramentas de integração contínua (Jenkins, Circle CI) em conjunto com análise de código automática com ferramentas como Sonarqube.
