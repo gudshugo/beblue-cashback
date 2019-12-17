@@ -4,8 +4,6 @@ import br.com.project.rest.cashback.enumeration.DiaEnum;
 import br.com.project.rest.cashback.model.Disco;
 import br.com.project.rest.cashback.model.Genero;
 import br.com.project.rest.cashback.model.dto.DiscosListaDTO;
-import br.com.project.rest.cashback.repository.DiscoRepository;
-import br.com.project.rest.cashback.repository.GeneroCashBackRepository;
 import br.com.project.rest.cashback.service.impl.DiscoService;
 import br.com.project.rest.cashback.service.impl.GeneroCashBackService;
 import br.com.project.rest.cashback.service.impl.ItemDiscoVendaService;
@@ -15,7 +13,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.mockito.stubbing.Answer;
 
 import java.util.*;
 
@@ -27,13 +24,20 @@ public class ItemDiscoVendaServiceImplTest {
     private IVendaService vendaService;
 
     private Disco discoA;
-    
+
+    private Genero genero;
+
+
     @Before
     public void setup() {
         this.itemDiscoVendaService = Mockito.mock(ItemDiscoVendaService.class);
         this.discoService = Mockito.mock(DiscoService.class);
         this.generoCashBackService = Mockito.mock(GeneroCashBackService.class);
         this.vendaService = Mockito.mock(VendaService.class);
+
+        this.genero = new Genero();
+        this.genero.setId(1L);
+        this.genero.setDescricao("Genero for Test");
 
         this.discoA = new Disco();
         this.discoA.setId(1L);
