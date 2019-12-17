@@ -13,10 +13,6 @@ Para subir o container com o projeto, execute:
 
 `$ sh start-application.sh`
 
-Para visualizar os testes unitários durante a compilação do maven:
-
-`$ sh start-application-with-tests.sh`
-
 Para parar a aplicação:
 
 `$ sh stop-application.sh`
@@ -27,7 +23,7 @@ Para parar a aplicação:
 ```
 http://localhost:8089/v1/discos?generoId=
 ```
-onde o parâmetro obrigatório da requisição é o identificador de um gênero (generoId), sendo colocado o gênero 1 como default. Os parâmetros opcionais são: page, linesPerPage, orderBy e direction (parâmetros do spring data page).
+onde o parâmetro obrigatório da requisição é o identificador de um gênero (generoId), sendo colocado o gênero 1 como default. Os parâmetros opcionais são: page, linesPerPage, orderBy e direction (parâmetros do spring data page) - Se você consultar sem o parâmetro generoId, a requisição retornará por default os discos do genero com identificador igual a 1.
   
   - Endpoint para consultar o disco pelo seu identificador:
 ```
@@ -57,7 +53,7 @@ onde o parâmetro obrigatório da requisição é o identificador de uma venda (
 ``` 
  http://localhost:8089/v1/vendas?dataInicio=&dataFim=
 ```   
-onde o parâmetro obrigatório da requisição são dataInicio e dataFim. Os parâmetros opcionais são: page, linesPerPage, orderBy e direction (parâmetros do spring data page).
+onde o parâmetro obrigatório da requisição são dataInicio e dataFim (no formato 2019/11/11). Os parâmetros opcionais são: page, linesPerPage, orderBy e direction (parâmetros do spring data page).
 
 ## Para acessar a documentação completa:
 
