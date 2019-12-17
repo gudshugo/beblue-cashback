@@ -22,8 +22,6 @@ import java.util.stream.IntStream;
 @Service
 public class ItemDiscoVendaService implements IItemDiscoVendaService {
 
-    private final ItemDiscoVendaRepository itemDiscoVendaRepository;
-
     private final IDiscoService discoService;
 
     private final IGeneroCashBackService generoCashBackService;
@@ -31,9 +29,7 @@ public class ItemDiscoVendaService implements IItemDiscoVendaService {
     private final IVendaService vendaService;
 
     @Autowired
-    public ItemDiscoVendaService(ItemDiscoVendaRepository itemDiscoVendaRepository, IDiscoService discoService,
-                                 IGeneroCashBackService generoCashBackService, IVendaService vendaService){
-        this.itemDiscoVendaRepository = itemDiscoVendaRepository;
+    public ItemDiscoVendaService(IDiscoService discoService, IGeneroCashBackService generoCashBackService, IVendaService vendaService){
         this.discoService = discoService;
         this.generoCashBackService = generoCashBackService;
         this.vendaService = vendaService;
@@ -65,7 +61,8 @@ public class ItemDiscoVendaService implements IItemDiscoVendaService {
        return false;
     }
 
-    private Map<Disco, Double> recuperarCashbackPorDiscos(List<Long> listaDiscosIds){
+    @Override
+    public Map<Disco, Double> recuperarCashbackPorDiscos(List<Long> listaDiscosIds){
 
         List<Disco> discos = discoService.findListaDiscosPorIds(listaDiscosIds);
 
