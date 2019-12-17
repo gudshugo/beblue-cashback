@@ -14,10 +14,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}/v1/discos",
+							"raw": "http://localhost:8089/v1/discos",
+							"protocol": "http",
 							"host": [
-								"{{HOST}}"
+								"localhost"
 							],
+							"port": "8089",
 							"path": [
 								"v1",
 								"discos"
@@ -32,10 +34,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}/v1/disco/1",
+							"raw": "http://localhost:8089/v1/disco/1",
+							"protocol": "http",
 							"host": [
-								"{{HOST}}"
+								"localhost"
 							],
+							"port": "8089",
 							"path": [
 								"v1",
 								"disco",
@@ -68,10 +72,12 @@
 							"raw": "{\n\t\"discoIds\" : [20, 3, 15]\n}"
 						},
 						"url": {
-							"raw": "{{HOST}}/v1/venda",
+							"raw": "http://localhost:8089/v1/venda",
+							"protocol": "http",
 							"host": [
-								"{{HOST}}"
+								"localhost"
 							],
+							"port": "8089",
 							"path": [
 								"v1",
 								"venda"
@@ -86,10 +92,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}/v1/venda/1",
+							"raw": "http://localhost:8089/v1/venda/1",
+							"protocol": "http",
 							"host": [
-								"{{HOST}}"
+								"localhost"
 							],
+							"port": "8089",
 							"path": [
 								"v1",
 								"venda",
@@ -105,10 +113,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}/v1/vendas?dataInicio=2019-12-17&dataFim=2019-12-17",
+							"raw": "http://localhost:8089/v1/vendas?dataInicio=2019-12-17&dataFim=2019-12-17",
+							"protocol": "http",
 							"host": [
-								"{{HOST}}"
+								"localhost"
 							],
+							"port": "8089",
 							"path": [
 								"v1",
 								"vendas"
