@@ -1,13 +1,10 @@
 package br.com.project.rest.cashback.service.impl;
 
 import br.com.project.rest.cashback.enumeration.DiaEnum;
-import br.com.project.rest.cashback.exceptions.DiscoNotFoundException;
 import br.com.project.rest.cashback.model.Disco;
 import br.com.project.rest.cashback.model.ItemDiscoVenda;
 import br.com.project.rest.cashback.model.Venda;
-import br.com.project.rest.cashback.model.dto.DiscoCashbacksDTO;
 import br.com.project.rest.cashback.model.dto.DiscosListaDTO;
-import br.com.project.rest.cashback.repository.ItemDiscoVendaRepository;
 import br.com.project.rest.cashback.service.IDiscoService;
 import br.com.project.rest.cashback.service.IGeneroCashBackService;
 import br.com.project.rest.cashback.service.IItemDiscoVendaService;
@@ -15,7 +12,10 @@ import br.com.project.rest.cashback.service.IVendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 

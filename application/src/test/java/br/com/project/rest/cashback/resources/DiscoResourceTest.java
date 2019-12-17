@@ -2,6 +2,7 @@ package br.com.project.rest.cashback.resources;
 
 import br.com.project.rest.cashback.model.Disco;
 import br.com.project.rest.cashback.model.Genero;
+import br.com.project.rest.cashback.service.IDiscoService;
 import br.com.project.rest.cashback.service.impl.DiscoService;
 import br.com.project.rest.cashback.utils.UtilMethods;
 import org.junit.Assert;
@@ -20,7 +21,7 @@ import java.util.UUID;
 
 public class DiscoResourceTest {
 
-    private DiscoService discoService;
+    private IDiscoService discoService;
 
     private Disco discoA;
     private Disco discoB;
@@ -31,7 +32,7 @@ public class DiscoResourceTest {
     @Before
     public void setup() {
 
-        this.discoService = Mockito.mock(DiscoService.class);
+        this.discoService = Mockito.mock(IDiscoService.class);
 
         this.genero = new Genero();
         this.genero.setId(1L);

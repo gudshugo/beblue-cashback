@@ -118,6 +118,25 @@ public class DiscoServiceImplTest {
     }
 
     @Test
+    public void testFindListaDiscosPorIds(){
+
+        List<Long> discosIds = new ArrayList<>();
+        discosIds.add(1L);
+        discosIds.add(2L);
+        discosIds.add(3L);
+
+        List<Disco> discos = new ArrayList<>();
+
+        Mockito.when(discoRepository.findDiscoByIdIn(discosIds)).thenReturn(discos);
+
+        DiscoService discoService = new DiscoService(discoRepository);
+        List<Disco> discosTested = discoService.findListaDiscosPorIds(discosIds);
+
+        Assert.assertEquals(discos, discosTested);
+
+    }
+
+    @Test
     public void testCheckIfExistsAnyEntryFails(){
 
         Long count = 0L;
