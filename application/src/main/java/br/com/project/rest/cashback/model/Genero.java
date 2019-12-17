@@ -20,15 +20,15 @@ public class Genero {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Long id;
+    private Integer id;
     private String descricao;
 
     public static class Builder {
 
-        private Long id;
+        private Integer id;
         private String descricao;
 
-        public Builder setId(Long id){
+        public Builder setId(Integer id){
             this.id = id;
             return this;
         }

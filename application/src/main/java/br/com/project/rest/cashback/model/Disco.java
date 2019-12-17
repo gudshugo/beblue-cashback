@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @Entity
@@ -18,7 +19,7 @@ public class Disco {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Long id;
+    private Integer id;
     private UUID uniqueId;
     private String nome;
     private Double valor;
@@ -30,13 +31,13 @@ public class Disco {
 
     public static class Builder {
 
-        private Long id;
+        private Integer id;
         private UUID uniqueId;
         private String nome;
         private Double valor;
         private Genero genero;
 
-        public Builder setId(Long id){
+        public Builder setId(Integer id){
             this.id = id;
             return this;
         }

@@ -45,8 +45,8 @@ public class ItemDiscoVendaService implements IItemDiscoVendaService {
 
         if(!findCashbackPorDisco.isEmpty()){
 
-            Venda venda = new Venda.Builder()
-                    .build();
+            Venda venda = new Venda();
+            venda.setUniqueId(UUID.randomUUID());
 
             List<ItemDiscoVenda> itens = findCashbackPorDisco.entrySet().stream()
                     .map(item -> new ItemDiscoVenda.Builder()
@@ -56,9 +56,7 @@ public class ItemDiscoVendaService implements IItemDiscoVendaService {
                     .withValorCashback(item.getKey().getValor() * item.getValue())
                     .build()).collect(Collectors.toList());
 
-            itemDiscoVendaRepository.saveAll(itens);
-
-            vendaService.saveVenda(itens);
+            vendaService.saveVenda(itens, venda);
 
             return true;
         }

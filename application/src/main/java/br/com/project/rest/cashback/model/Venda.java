@@ -1,10 +1,13 @@
 package br.com.project.rest.cashback.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -17,14 +20,15 @@ public class Venda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private Double valorVenda;
 
     private Double valorCashback;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "venda_id")
+    @JsonIgnore
     private List<ItemDiscoVenda> itemDiscoVendas;
 
     private Date dataVenda;
@@ -33,14 +37,14 @@ public class Venda {
 
     public static class Builder {
 
-        private Long id;
+        private Integer id;
         private Double valorVenda;
         private Double valorCashback;
         private Date dataVenda;
         private UUID uniqueId;
         private List<ItemDiscoVenda> itemDiscoVendas;
 
-        public Builder setId(Long id){
+        public Builder setId(Integer id){
             this.id = id;
             return this;
         }
@@ -81,6 +85,7 @@ public class Venda {
         valorCashback = builder.valorCashback;
         itemDiscoVendas = builder.itemDiscoVendas;
         dataVenda  = builder.dataVenda;
+        uniqueId = builder.uniqueId;
     }
 
 }

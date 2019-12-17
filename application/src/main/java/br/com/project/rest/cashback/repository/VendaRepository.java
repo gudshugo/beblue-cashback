@@ -1,5 +1,6 @@
 package br.com.project.rest.cashback.repository;
 
+import br.com.project.rest.cashback.model.Disco;
 import br.com.project.rest.cashback.model.Venda;
 import org.springframework.data.jpa.repository.JpaRepository;
 

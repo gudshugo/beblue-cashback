@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "disco_venda")
@@ -15,13 +16,13 @@ public class ItemDiscoVenda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "disco_id")
     private Disco disco;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "venda_id")
     private Venda venda;
 
@@ -31,13 +32,13 @@ public class ItemDiscoVenda {
 
     public static class Builder {
 
-        private Long id;
+        private Integer id;
         private Disco disco;
         private Venda venda;
         private Double valorVenda;
         private Double valorCashback;
 
-        public Builder setId(Long id){
+        public Builder setId(Integer id){
             this.id = id;
             return this;
         }
