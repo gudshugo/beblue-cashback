@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "5a27ec3f-2d16-4acd-ad1b-ef2f7e9c7a9d",
+		"name": "Cashback-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Disco",
+			"item": [
+				{
+					"name": "findDiscos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/v1/discos",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"discos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findDisco",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/v1/disco/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"disco",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Venda",
+			"item": [
+				{
+					"name": "vendaDiscos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"discoIds\" : [20, 3, 15]\n}"
+						},
+						"url": {
+							"raw": "{{HOST}}/v1/venda",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"venda"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findVenda",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/v1/venda/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"venda",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findVendas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/v1/vendas?dataInicio=2019-12-17&dataFim=2019-12-17",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"vendas"
+							],
+							"query": [
+								{
+									"key": "dataInicio",
+									"value": "2019-12-17"
+								},
+								{
+									"key": "dataFim",
+									"value": "2019-12-17"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
