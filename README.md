@@ -67,6 +67,8 @@ onde o parâmetro obrigatório da requisição são dataInicio e dataFim. Os par
 
 Caso queira importar o projeto em alguma IDE, importar apenas a pasta /application.
 
+Na raiz do projeto também tem o arquivo JSON referente a coleção com as rotas na aplicação do Postman, com os endpoints organizados.
+
 ## Melhorias no projeto:
 
 1. Criar ambiente de testes automatizados por meio de ferramentas de integração contínua (Jenkins, Circle CI) em conjunto com análise de código automática com ferramentas como Sonarqube.
