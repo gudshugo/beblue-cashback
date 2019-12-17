@@ -4,9 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,7 +23,7 @@ public class Venda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private Double valorVenda;
 
@@ -31,20 +34,20 @@ public class Venda {
     @JsonIgnore
     private List<ItemDiscoVenda> itemDiscoVendas;
 
-    private Date dataVenda;
+    private LocalDate dataVenda;
 
     private UUID uniqueId;
 
     public static class Builder {
 
-        private Integer id;
+        private Long id;
         private Double valorVenda;
         private Double valorCashback;
-        private Date dataVenda;
+        private LocalDate dataVenda;
         private UUID uniqueId;
         private List<ItemDiscoVenda> itemDiscoVendas;
 
-        public Builder setId(Integer id){
+        public Builder setId(Long id){
             this.id = id;
             return this;
         }
@@ -59,7 +62,7 @@ public class Venda {
             return this;
         }
 
-        public Builder withDataVenda(Date dataVenda){
+        public Builder withDataVenda(LocalDate dataVenda){
             this.dataVenda = dataVenda;
             return this;
         }

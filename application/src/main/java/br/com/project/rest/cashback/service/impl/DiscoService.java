@@ -40,8 +40,8 @@ public class DiscoService implements IDiscoService {
     }
 
     @Override
-    public Disco findDisco(Integer id){
-        Optional<Disco> disco = discoRepository.findById(id);
+    public Disco findDisco(Long id){
+        Optional<Disco> disco = Optional.ofNullable(discoRepository.findDiscoById(id));
 
         if(disco.isPresent())
             return disco.get();

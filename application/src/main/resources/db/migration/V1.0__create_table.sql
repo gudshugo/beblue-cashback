@@ -1,6 +1,6 @@
 CREATE TABLE disco
  (
-	id int NOT NULL,
+	id bigserial NOT NULL,
 	nome varchar(255) NULL,
 	unique_id uuid NULL,
 	genero_id int8 NULL,
@@ -9,7 +9,7 @@ CREATE TABLE disco
 );
 
 CREATE TABLE disco_venda (
-	id int NOT NULL,
+	id bigserial NOT NULL,
 	valor_cashback float8  NULL,
 	valor_venda float8 NULL,
 	disco_id int8 NULL,
@@ -18,13 +18,13 @@ CREATE TABLE disco_venda (
 );
 
 CREATE TABLE genero (
-	id int NOT NULL,
+	id bigserial NOT NULL,
 	descricao varchar(255) NULL,
 	CONSTRAINT genero_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE genero_cashback (
-	id int NOT NULL,
+	id bigserial NOT NULL,
 	cashback float8 NULL,
 	dia int4 NULL,
 	genero_id int8 NULL,
@@ -32,7 +32,7 @@ CREATE TABLE genero_cashback (
 );
 
 CREATE TABLE venda (
-	id int NOT NULL,
+	id bigserial NOT NULL,
 	data_venda timestamp NULL,
 	valor_cashback float8 NULL,
 	valor_venda float8 NULL,

@@ -28,7 +28,7 @@ public class DiscoResource {
     @ApiOperation("Endpoint para consultar o catálogo de discos de forma paginada, filtrando por gênero e ordenando de forma crescente pelo nome do disco.")
     @GetMapping(value = "/v1/discos", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Page<Disco>> findDiscos(
-            @RequestParam(value="generoId", defaultValue="0", required = true) Long generoId,
+            @RequestParam(value="generoId", defaultValue="1", required = true) Long generoId,
             @RequestParam(value="page", defaultValue="0") Integer page,
             @RequestParam(value="linesPerPage", defaultValue="10") Integer linesPerPage,
             @RequestParam(value="orderBy", defaultValue="nome") String orderBy,

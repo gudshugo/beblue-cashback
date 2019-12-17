@@ -15,5 +15,7 @@ public interface DiscoRepository extends JpaRepository<Disco, Integer> {
 
     Page<Disco> findDiscoByGeneroId(Long generoId, Pageable pageRequest);
 
+    Disco findDiscoById(Long id);
+
     List<Disco> findDiscoByIdIn(List<Long> discosId);
 }

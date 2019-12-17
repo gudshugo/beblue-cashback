@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @AllArgsConstructor
@@ -19,7 +18,7 @@ public class GeneroCashBack {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Integer id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "genero_id")
@@ -32,12 +31,12 @@ public class GeneroCashBack {
 
     public static class Builder {
 
-        private Integer id;
+        private Long id;
         private Genero genero;
         private DiaEnum dia;
         private Double cashback;
 
-        public Builder setId(Integer id){
+        public Builder setId(Long id){
             this.id = id;
             return this;
         }

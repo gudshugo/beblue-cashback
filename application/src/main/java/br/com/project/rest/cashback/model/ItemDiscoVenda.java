@@ -16,7 +16,7 @@ public class ItemDiscoVenda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "disco_id")
@@ -32,13 +32,13 @@ public class ItemDiscoVenda {
 
     public static class Builder {
 
-        private Integer id;
+        private Long id;
         private Disco disco;
         private Venda venda;
         private Double valorVenda;
         private Double valorCashback;
 
-        public Builder setId(Integer id){
+        public Builder setId(Long id){
             this.id = id;
             return this;
         }

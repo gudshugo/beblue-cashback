@@ -19,7 +19,7 @@ public class Disco {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Integer id;
+    private Long id;
     private UUID uniqueId;
     private String nome;
     private Double valor;
@@ -31,13 +31,13 @@ public class Disco {
 
     public static class Builder {
 
-        private Integer id;
+        private Long id;
         private UUID uniqueId;
         private String nome;
         private Double valor;
         private Genero genero;
 
-        public Builder setId(Integer id){
+        public Builder setId(Long id){
             this.id = id;
             return this;
         }

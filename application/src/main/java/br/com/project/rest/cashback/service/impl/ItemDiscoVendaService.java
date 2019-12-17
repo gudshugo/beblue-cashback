@@ -1,6 +1,7 @@
 package br.com.project.rest.cashback.service.impl;
 
 import br.com.project.rest.cashback.enumeration.DiaEnum;
+import br.com.project.rest.cashback.exceptions.DiscoNotFoundException;
 import br.com.project.rest.cashback.model.Disco;
 import br.com.project.rest.cashback.model.ItemDiscoVenda;
 import br.com.project.rest.cashback.model.Venda;
