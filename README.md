@@ -1,5 +1,6 @@
 # beblue-cashback
-Projeto de uma API REST em Java (Spring Framework) referente ao teste técnico para desenvolvedor java na Fintech Beblue.
+
+Projeto de uma API REST para calcular cashback em Java (Spring Framework).
 
 ## Requerimentos:
   
