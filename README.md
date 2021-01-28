@@ -72,3 +72,5 @@ At the root of the project there is also the JSON file referring to the collecti
 1. Create an automated testing environment using continuous integration tools (Jenkins, Circle CI) together with automatic code analysis with tools like Sonarqube.
 2. Use message broker making some API processes more asynchronous.
 3. Implement load balancer service to intercept API requests (Netflix Zuul, Ribbon, Hystrix).
+
+![alt text](https://img.ibxk.com.br/2020/01/30/30021141299110.jpg?w=1120&h=420&mode=crop&scale=both)
